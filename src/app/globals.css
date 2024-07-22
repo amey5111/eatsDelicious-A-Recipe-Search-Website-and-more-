@@ -39,3 +39,48 @@ body {
   .card-back {
     transform: rotateY(180deg);
   }
+
+/* styles.css */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+.typing-placeholder {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid black;
+  animation: typing 3s steps(20, end), blink-caret 0.75s step-end infinite;
+}
+@media (max-width: 640px) {
+  .typing-placeholder {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .typing-placeholder {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .typing-placeholder {
+    font-size: 18px;
+  }
+} 

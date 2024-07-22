@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
-import styles from "./HeroContainerStyles.css";
 
 export default function HeroContainer() {
   const [typingText, setTypingText] = useState("");
@@ -92,7 +91,6 @@ export default function HeroContainer() {
           </button>
         </div>
       </div>
-      <style jsx>{styles}</style>
     </div>
   );
 }
