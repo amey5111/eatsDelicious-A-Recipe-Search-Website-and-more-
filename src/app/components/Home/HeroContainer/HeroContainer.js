@@ -64,7 +64,7 @@ export default function HeroContainer() {
         <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
           What do you feel like cooking?
         </h1>
-        <div className="flex items-center bg-white w-full max-w-md mx-auto rounded-xl sm:rounded-2xl p-1 sm:p-2 dark:bg-gray-700 dark:text-white">
+        <div className="flex items-center bg-white w-4/5 lg:w-full max-w-md mx-auto rounded-xl sm:rounded-2xl p-1 sm:p-2 dark:bg-gray-700 dark:text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
