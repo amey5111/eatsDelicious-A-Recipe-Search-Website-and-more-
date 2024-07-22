@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withImages from 'next-images';
 
-export default nextConfig;
+const nextConfig = {
+    images: {
+        domains: ['edamam-product-images.s3.amazonaws.com'],
+      },
+};
+
+export default withImages(nextConfig);

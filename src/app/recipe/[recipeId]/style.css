@@ -1,0 +1,11 @@
+.responsive-img {
+  width: 300px;
+  height: 450px;
+}
+
+@media (min-width: 1024px) {
+  .responsive-img {
+    width: 800px;
+    height: 350px;
+  }
+}
