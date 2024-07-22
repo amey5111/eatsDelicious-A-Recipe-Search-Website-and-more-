@@ -206,9 +206,9 @@ export default function SearchPage({ params }) {
   };
 
   return (
-    <div className="w-screen mx-0 px-5 lg:px-10 py-8 dark:bg-[#1b1d21] dark:text-white">
+    <div className="min-w-screen mx-0 px-5 lg:px-10 py-8 dark:bg-[#1b1d21] dark:text-white">
       <div className="flex justify-between w-full lg:mx-auto">
-        <h1 className="text-xl lg:text-3xl font-bold mb-4 dark:text-white h-fit my-auto lg:px-3 lg:py-1 lg:bg-green-100 lg:dark:bg-green-950 lg:border-b lg:border-b-green-500 lg:pb-3">
+        <h1 className="text-2xl lg:text-3xl font-bold mb-4 dark:text-white h-fit my-auto lg:px-3 lg:py-1 lg:bg-green-100 lg:dark:bg-green-950 lg:border-b lg:border-b-green-500 lg:pb-3">
         {filtersApplied 
     ? "Filtred Search results as per your preferences"
     : `Search Results ${getSearchString(decodedSlug)}`}
@@ -302,7 +302,7 @@ export default function SearchPage({ params }) {
                       </div>
                     </div>
                   </div>
-                  <div className="flex-shrink-0 px-4 py-4 flex justify-end border-t border-gray-200">
+                  <div className="flex-shrink-0 px-4 py-4 flex justify-end border-t border-gray-200 lg:mb-0 mb-8">
                     <button
                       type="button"
                       className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
@@ -372,31 +372,31 @@ export default function SearchPage({ params }) {
                   />
                 </div>
                 <div className="text-center text-wrap p-1 lg:p-4">
-                  <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+                  <h2 className="lg:text-xl font-semibold text-gray-800 dark:text-white text-2xl">
                     {hit.recipe.label}
                   </h2>
                 </div>
                 <div className="flex flex-row w-fit lg:space-x-2 text-xs lg:text-sm font-mono lg:px-2 pb-2 align-middle">
-                  <span className="font-sans text-sm lg:text-lg px-1 dark:text-white">
+                  <span className="font-sans text-lg px-1 dark:text-white">
                     Cuisine Type:
                   </span>
-                  <div className="py-1 px-2 bg-purple-100 dark:bg-purple-700 border border-purple-500 dark:border-purple-400 text-black dark:text-white rounded-xl mr-2">
+                  <div className="py-1 px-2 bg-purple-100 dark:bg-purple-700 border border-purple-500 dark:border-purple-400 text-black dark:text-white rounded-xl mr-2 lg:text-base">
                     {hit.recipe.cuisineType[0]}
                   </div>
                 </div>
                 <div className="flex flex-row w-fit lg:space-x-2 text-xs lg:text-sm font-mono lg:px-2 pb-2 align-middle">
                   {hit.recipe.dietLabels.length > 0 && (
-                    <span className="font-sans text-sm lg:text-lg px-1 dark:text-white">
+                    <span className="font-sans text-lg px-1 dark:text-white">
                       Health Labels:
                     </span>
                   )}
                   {hit.recipe.dietLabels[0] && (
-                    <div className="py-1 px-2 bg-orange-100 dark:bg-orange-700 border border-orange-500 dark:border-orange-400 text-black dark:text-white rounded-xl mr-2">
+                    <div className="py-1 px-2 bg-orange-100 dark:bg-orange-700 border border-orange-500 dark:border-orange-400 text-black dark:text-white rounded-xl mr-2 lg:text-base">
                       {hit.recipe.dietLabels[0]}
                     </div>
                   )}
                   {hit.recipe.dietLabels[1] && (
-                    <div className="py-1 px-2 bg-orange-100 dark:bg-orange-700 border border-orange-500 dark:border-orange-400 text-black dark:text-white rounded-xl">
+                    <div className="py-1 px-2 bg-orange-100 dark:bg-orange-700 border border-orange-500 dark:border-orange-400 text-black dark:text-white rounded-xl lg:text-base">
                       {hit.recipe.dietLabels[1]}
                     </div>
                   )}
