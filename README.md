@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Eats Delicious
 
-First, run the development server:
+An easy to use recipe search website with over 2 million+ recipes 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Live Link : https://eats-delicious.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+![App Screenshot](https://github.com/amey5111/amey5111/blob/main/eats_delicious/eats-delicious%20first%20fold.png?raw=true)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Features and Optimizations
 
-## Deploy on Vercel
+#### Features
+- Search from among 2 Millons + recipes in just few clicks
+- Use various filter catagories to perfecly tailor out and find recipies he/she neeed.
+- View nutritional information about each recipe along with recipe info
+- Search recipes as per his/her need of particular nutrients quntity in diet
+- Explore different amazing food facts  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Optimizations
+- UI of website is responsive to fit any size of screen
+- A User Friendly UI with both light and dark modes designed  
+## Tech Stack
+`Next JS` `TailwindCSS` `Node JS` `API`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Acknowledgements
+Recipe data powered by 
+ - [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api)
+Images courtesy
+ - [Freepik](https://www.freepik.com/)
+ Food Facts Information courtesy of
+ - [weareteachers.com](https://www.weareteachers.com/fun-food-facts/)
+ - [thefactsite.com](https://www.thefactsite.com/100-random-food-facts/)
+
