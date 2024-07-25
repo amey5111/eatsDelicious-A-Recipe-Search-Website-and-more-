@@ -71,7 +71,7 @@ const Navbar = () => {
         </Link>
         <Link
           className="text-[#f2610d] text-lg font-semibold leading-normal relative"
-          href="/"
+          href="/food-story"
         >
           Food Story
           <span className="absolute top-[-14px] right-[-95px] text-xs font-semibold px-2 py-1 rounded-full text-white bg-gradient-to-r from-green-200 to-green-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-green-700">Coming Soon...</span>
@@ -167,7 +167,7 @@ const Navbar = () => {
           </Link>
           <Link
             className="block text-[#f2610d] text-lg font-semibold leading-normal my-2 px-4 py-2 relative"
-            href="/"
+            href="/food-story"
             onClick={handleMenuToggle}
           >
             Food Story
