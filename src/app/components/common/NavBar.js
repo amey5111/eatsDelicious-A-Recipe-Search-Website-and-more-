@@ -74,7 +74,7 @@ const Navbar = () => {
           href="/food-story"
         >
           Food Story
-          <span className="absolute top-[-14px] right-[-95px] text-xs font-semibold px-2 py-1 rounded-full text-white bg-gradient-to-r from-green-200 to-green-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-green-700">Coming Soon...</span>
+          <span className="absolute top-[-11px] right-[-81px] text-xs font-semibold px-2 py-1 rounded-full text-white bg-gradient-to-r from-green-200 to-green-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-green-700">New Story...</span>
         </Link>
       </div>
       <div className="hidden md:flex flex-1 justify-end gap-8 align-middle">
@@ -171,7 +171,7 @@ const Navbar = () => {
             onClick={handleMenuToggle}
           >
             Food Story
-            <span className="ml-2 text-xs font-semibold px-2 py-1 rounded-full text-white bg-gradient-to-r from-green-200 to-green-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-green-700">Coming Soon...</span>
+            <span className="ml-2 text-xs font-semibold px-2 py-1 rounded-full text-white bg-gradient-to-r from-green-200 to-green-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-green-700">New Story...</span>
           </Link>
         </div>
       )}

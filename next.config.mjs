@@ -3,7 +3,10 @@ import withImages from 'next-images';
 
 const nextConfig = {
     images: {
-        domains: ['edamam-product-images.s3.amazonaws.com'],
+        domains: [
+          'edamam-product-images.s3.amazonaws.com',
+          'cdn.sanity.io'
+        ],
       },
 };
 

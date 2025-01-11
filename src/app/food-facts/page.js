@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { facts } from "./facts";
+import client from "@/lib/sanity";
+import { urlFor } from "@/lib/sanity";
+import Loading from "../components/common/Loading";
 
 // Fisher-Yates shuffle algorithm
 const shuffleArray = (array) => {
@@ -14,16 +16,33 @@ const shuffleArray = (array) => {
 };
 
 const FoodFacts = () => {
+  const [foodFacts, setFoodFacts] = useState([]);
   const [shuffledFacts, setShuffledFacts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isRevealed, setIsRevealed] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const REVEAL_DELAY = 0; // 0 seconds
   const NEXT_SLIDE_DELAY = 6500; // 6.5 seconds
 
   useEffect(() => {
-    // Shuffle facts when component mounts
-    setShuffledFacts(shuffleArray(facts));
+    // Fetch the facts
+    async function fetchFoodFacts() {
+      try {
+        setIsLoading(true);
+        const fetchedFoodFacts = await client.fetch(`*[_type == "foodFact"]`);
+        console.log("Fetched foodFacts from Sanity:", fetchedFoodFacts);
+        setFoodFacts(fetchedFoodFacts);
+        // Shuffle facts when they are fetched
+        setShuffledFacts(shuffleArray(fetchedFoodFacts));
+      } catch (error) {
+        console.error("Error fetching posts from Sanity:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchFoodFacts();
   }, []);
 
   useEffect(() => {
@@ -53,10 +72,20 @@ const FoodFacts = () => {
     setIsRevealed(false);
   };
 
+  if (isLoading) {
+    return (
+      <div className="bg-gradient-to-br from-green-400 to-blue-500 dark:from-green-800 dark:to-blue-900 flex items-center justify-center p-4 min-h-screen">
+        <div className="text-white text-3xl font-bold">Loading Food Facts...</div>
+      </div>
+    );
+  }
+
   if (shuffledFacts.length === 0) return null;
 
+  const currentFact = shuffledFacts[currentIndex];
+
   return (
-    <div className="bg-gradient-to-br from-green-400 to-blue-500 dark:from-green-800 dark:to-blue-900 flex items-center justify-center p-4">
+    <div className="bg-gradient-to-br from-green-400 to-blue-500 dark:from-green-800 dark:to-blue-900 flex items-center justify-center p-4 min-h-screen">
       <div className="max-w-5xl w-full flex items-center">
         <button
           onClick={prevSlide}
@@ -84,7 +113,7 @@ const FoodFacts = () => {
               }}
             />
             <Image
-              src={shuffledFacts[currentIndex].image}
+              src={urlFor(currentFact.image).url()}
               alt="Food fact illustration"
               layout="fill"
               objectFit="cover"
@@ -92,7 +121,7 @@ const FoodFacts = () => {
             {isRevealed && (
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-6">
                 <p className="text-white text-3xl text-center font-semibold">
-                  {shuffledFacts[currentIndex].fact}
+                  {currentFact.text}
                 </p>
               </div>
             )}
