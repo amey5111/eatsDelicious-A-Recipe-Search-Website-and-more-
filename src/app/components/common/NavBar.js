@@ -35,7 +35,7 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className=" flex items-center justify-between whitespace-nowrap px-10 py-3 bg-white border dark:border-0 dark:bg-gray-700 sticky top-0 z-50 w-[102%]">
+    <nav className=" flex items-center justify-around whitespace-nowrap px-10 py-3 bg-white border dark:border-0 dark:bg-gray-700 sticky top-0 z-50 w-[102%]">
       <Link href="/" className="flex items-center gap-8">
         <div className="flex items-center gap-2 text-[#181311]">
           <Image
