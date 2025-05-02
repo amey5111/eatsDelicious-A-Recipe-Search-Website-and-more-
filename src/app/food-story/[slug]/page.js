@@ -92,18 +92,18 @@ function Blog() {
                   d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
                 />
               </svg>
-              <div className="text-sm h-fit my-auto ml-1">
+              <div className=" hidden lg:visible text-sm h-fit my-auto ml-1">
                 Navigate Through Story
               </div>
             </div>
           )}
         </div>
         {isMenuOpen && (
-          <div className="bg-white text-blue-500 dark:text-green-300 flex flex-col w-fit absolute rounded-xl pl-16 py-5 pt-12 px-5 z-10 space-y-4 shadow-lg dark:bg-gray-700">
+          <div className="bg-white text-blue-500 dark:text-green-300 flex flex-col w-4/5 lg:w-fit absolute rounded-xl pl-16 py-5 pt-12 px-3 lg:px-5 z-10 space-y-4 shadow-lg dark:bg-gray-700">
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="w-fit text-lg border-y border-y-yellow-400 font-serif px-1 py-0.5 hover:bg-orange-300 dark:hover:bg-orange-500 hover:text-white hover:cursor-pointer"
+                className="w-fit lg:text-lg border-y border-y-yellow-400 font-serif px-1 py-0.5 hover:bg-orange-300 dark:hover:bg-orange-500 hover:text-white hover:cursor-pointer"
                 onClick={() => handleMenuOptionClick(index)}
               >
                 {slide.title}
@@ -111,7 +111,7 @@ function Blog() {
             ))}
           </div>
         )}
-        <h1 className="text-right border-b-4 w-10/12 text-white font-bold text-5xl pb-5 ml-auto mr-10 pt-8 mb-8">
+        <h1 className=" text-center lg:text-right border-b-4 w-10/12 text-white font-bold text-2xl lg:text-5xl pb-5 ml-auto mr-10 pt-8 mb-8">
           {slides[currentSlide]?.title}
         </h1>
         <div className="flex-grow overflow-hidden">
