@@ -5,7 +5,9 @@
 
 body {
     @apply overflow-x-hidden;
-    zoom: 0.8
+    html {
+  font-size: 14px; /* Instead of zoom: 0.8 */
+}
   }
 
   .dark body {
