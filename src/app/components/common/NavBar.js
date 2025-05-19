@@ -78,17 +78,17 @@ const Navbar = () => {
             New Story...
           </span>
         </Link>
-        <Link
-          className="text-[#f2610d] text-lg font-semibold leading-normal relative ml-44 bg-orange-100 dark:bg-orange-400 shadow-md shadow-orange-200 hover:bg-gradient-to-tr hover:from-orange-100 hover:to-orange-300 dark:hover:bg-gradient-to-tr dark:hover:from-orange-500 dark:hover:to-orange-700 dark:shadow-md dark:shadow-orange-200 dark:text-white rounded-xl py-1 px-5"
-          href="/magic-chef-ai"
-        >
-          <span className="font-bold text-2xl">🍵</span> Magic Chef
-          <span className="absolute top-[-16px] right-[-40px] text-xs font-bold px-2 py-1 rounded-full text-white bg-gradient-to-r from-green-200 to-green-300 dark:bg-gradient-to-r dark:from-gray-700 dark:to-green-700 shadow-sm shadow-green-300 dark:shadow-sm dark:shadow-green-300">
-            AI Powered
-          </span>
-        </Link>
       </div>
       <div className="hidden md:flex flex-1 justify-end gap-8 align-middle">
+        <Link
+        href="/magic-chef-ai"
+        className="flex flex-col items-center font-semibold dark:text-white bg-orange-500 text-white rounded-xl py-1 px-8 shadow-lg shadow-orange-300 text-xl relative"
+      >
+        🧑🏼‍🍳Magic Chef
+        <span className="ml-2 bg-white text-orange-500 text-xs font-bold px-1.5 py-0.5 rounded-md">
+          AI Powered
+        </span>
+      </Link>
         <ThemeToggle />
         <label className="flex flex-col min-w-96 !h-10 max-w-64 my-auto mr-1">
           <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
