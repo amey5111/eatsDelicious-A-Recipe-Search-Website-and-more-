@@ -19,7 +19,7 @@ If the user is asking for something else like modifying a recipe, or other recip
   "diet": "vegan/vegetarian/none",
   "mealType": "breakfast/lunch/dinner/snack"
 }
-in that case
+in that case.
 
 also avoid the descriptiom about you response in any case like "Since the user is asking for a recipe modification and not specifying ingredients or dietary preferences for a new recipe, here's my response: or (Note: This response does not include the JSON object format because the user is asking for a recipe modification, not specifying ingredients or dietary preferences for a new recipe.)" 
 
@@ -49,14 +49,22 @@ User: ${prompt}
 
   const mistralData = await mistralRes.json();
   let rawReply = mistralData.choices?.[0]?.message?.content || "";
+  console.log("🧠 Mistral Raw Reply:", rawReply);
+
   let reply = rawReply;
   let source = "ai";
 
-  let structuredQuery = {};
-  try {
-    structuredQuery = JSON.parse(rawReply);
-  } catch (err) {
-    structuredQuery = null;
+  let structuredQuery = null;
+
+  // ✅ Extract valid JSON only, in case it’s wrapped in text
+  const jsonMatch = rawReply.match(/\{[\s\S]*?\}/);
+  if (jsonMatch) {
+    try {
+      structuredQuery = JSON.parse(jsonMatch[0]);
+    } catch (err) {
+      console.error("❌ JSON parse error:", err.message);
+      structuredQuery = null;
+    }
   }
 
   if (
@@ -76,6 +84,8 @@ User: ${prompt}
       ingredients
     )}${diet}${mealType}&addRecipeInformation=true&fillIngredients=true&number=5&apiKey=${process.env.SPOONACULAR_API_KEY}`;
 
+    console.log("🔗 Spoonacular URL:", spoonacularUrl);
+
     const spoonacularRes = await fetch(spoonacularUrl);
 
     if (!spoonacularRes.ok) {
@@ -85,21 +95,27 @@ User: ${prompt}
     }
 
     const spoonacularData = await spoonacularRes.json();
+    console.log("🥘 Spoonacular Results:", spoonacularData.results?.length);
 
     if (spoonacularData.results?.length > 0) {
       source = "api";
       return NextResponse.json({
         source,
         recipes: spoonacularData.results.map((r) => ({
-          title: r.title,
-          image: r.image,
-          summary: r.summary,
-          ingredients: r.extendedIngredients?.map((i) => ({
-            name: i.name,
-            amount: `${i.amount} ${i.unit}`,
-          })),
-          link: r.sourceUrl || `https://spoonacular.com/recipes/${r.title.replace(/ /g, "-").toLowerCase()}-${r.id}`,
-        })),
+  title: r.title,
+  image: r.image,
+  summary: r.summary,
+  ingredients: r.extendedIngredients?.map((i) => ({
+    name: i.name,
+    amount: `${i.amount} ${i.unit}`,
+  })),
+  link: r.sourceUrl || `https://spoonacular.com/recipes/${r.title.replace(/ /g, "-").toLowerCase()}-${r.id}`,
+  vegetarian: r.vegetarian,
+  vegan: r.vegan,
+  glutenFree: r.glutenFree,
+  dairyFree: r.dairyFree,
+  veryHealthy: r.veryHealthy,
+})),
       });
     } else {
       return NextResponse.json({

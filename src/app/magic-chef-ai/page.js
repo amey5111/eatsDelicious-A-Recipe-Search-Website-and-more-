@@ -71,9 +71,7 @@ export default function Home() {
   return (
     <div className="min-h-screen p-8 flex flex-col lg:flex-row space-x-5 justify-between">
       <div className="min-w-[54%]">
-        <div
-          className="flex mx-auto flex-col items-center w-4/5 lg:w-1/2 font-semibold text-white rounded-xl py-1 px-2 text-4xl  lg:text-5xl relative pb-5 mb-5 bg-gradient-to-tr from-orange-300 to-orange-500 dark:bg-gradient-to-tr dark:from-orange-950 dark:to-orange-500"
-        >
+        <div className="flex mx-auto flex-col items-center w-4/5 lg:w-1/2 font-semibold text-white rounded-xl py-1 px-2 text-4xl  lg:text-5xl relative pb-5 mb-5 bg-gradient-to-tr from-orange-300 to-orange-500 dark:bg-gradient-to-tr dark:from-orange-950 dark:to-orange-500">
           😋Magic Chef
           <span className="ml-2 bg-white text-orange-500 text-sm font-bold px-1.5 py-0.5 rounded-md mt-1 dark:bg-orange-500 dark:text-white">
             AI Powered Recipe Expert
@@ -136,31 +134,72 @@ export default function Home() {
         {/* API Recipes */}
         {recipes.length > 0 && (
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
+            <div className=" col-span-2 text-xl font-mono dark:text-white">Here are some recipes that I found for you from Spoonacular just for you...😋</div>
             {recipes.map((r, index) => (
-              <div key={index} className="bg-white rounded-lg shadow p-4">
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-md p-4 dark:bg-gray-950 dark:text-orange-500 transition-all duration-300 hover:shadow-lg"
+              >
                 <img
                   src={r.image}
                   alt={r.title}
-                  className="w-full h-48 object-cover rounded mb-3"
+                  className="w-full h-48 object-cover rounded-lg mb-3"
                 />
-                <h2 className="text-xl font-semibold mb-1">{r.title}</h2>
+
+                <h2 className="text-xl font-bold mb-1">{r.title}</h2>
+
                 <p
-                  className="text-sm text-gray-700 mb-2"
-                  dangerouslySetInnerHTML={{ __html: r.summary }}
-                />
+  className="text-gray-700 dark:text-white text-base mb-2"
+  dangerouslySetInnerHTML={{
+    __html: `${r.summary?.split('. ')[0]}.`,
+  }}
+></p>
+
+
+                {/* Health Tags */}
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {r.vegetarian && (
+                    <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full dark:bg-green-900 dark:text-green-200">
+                      Vegetarian
+                    </span>
+                  )}
+                  {r.vegan && (
+                    <span className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded-full dark:bg-purple-900 dark:text-purple-200">
+                      Vegan
+                    </span>
+                  )}
+                  {r.glutenFree && (
+                    <span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full dark:bg-yellow-900 dark:text-yellow-200">
+                      Gluten-Free
+                    </span>
+                  )}
+                  {r.dairyFree && (
+                    <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full dark:bg-blue-900 dark:text-blue-200">
+                      Dairy-Free
+                    </span>
+                  )}
+                  {r.veryHealthy && (
+                    <span className="text-xs px-2 py-1 bg-teal-100 text-teal-800 rounded-full dark:bg-teal-900 dark:text-teal-200">
+                      Healthy
+                    </span>
+                  )}
+                </div>
+
                 <h3 className="font-semibold mt-2">📝 Ingredients:</h3>
-                <ul className="list-disc ml-6 text-sm text-gray-800 mb-2">
-                  {r.ingredients?.map((i, idx) => (
+                <ul className="list-disc ml-6 text-sm text-gray-800 dark:text-white mb-2">
+                  {r.ingredients?.slice(0, 6).map((i, idx) => (
                     <li key={idx}>
                       {i.name} - {i.amount}
                     </li>
                   ))}
+                  {r.ingredients?.length > 6 && <li>...and more</li>}
                 </ul>
+
                 <a
                   href={r.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                  className="inline-block mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
                 >
                   View Full Recipe
                 </a>
