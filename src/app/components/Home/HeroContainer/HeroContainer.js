@@ -1,6 +1,7 @@
-'use client';
+"use client";
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function HeroContainer() {
   const [typingText, setTypingText] = useState("");
@@ -49,14 +50,14 @@ export default function HeroContainer() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && inputValue.trim()) {
+    if (e.key === "Enter" && inputValue.trim()) {
       handleSearch();
     }
   };
 
   return (
     <div
-      className="relative w-11/12 sm:w-5/6 h-52 sm:h-60 md:h-80 lg:h-96 flex items-center justify-center bg-cover bg-center py-5 sm:py-5 lg:py-10 mx-auto rounded-xl sm:rounded-2xl dark:bg-black dark:text-white mt-6"
+      className="relative w-11/12 sm:w-5/6 h-72 sm:h-60 md:h-80 lg:h-96 flex items-center justify-center bg-cover bg-center py-5 sm:py-5 lg:py-10 mx-auto rounded-xl sm:rounded-2xl dark:bg-black dark:text-white mt-6"
       style={{ backgroundImage: "url('/heroBackground.png')" }}
     >
       <div className="absolute inset-0 bg-black opacity-50 rounded-xl sm:rounded-2xl"></div>
@@ -83,13 +84,35 @@ export default function HeroContainer() {
             value={inputValue}
             onChange={handleInputChange}
           />
-          <button 
+          <button
             className="ml-1 px-2 sm:px-3 py-1 sm:py-2 bg-orange-500 text-white hover:bg-orange-600 focus:outline-none rounded-lg text-xs sm:text-sm md:text-base flex-shrink-0 dark:bg-orange-300 dark:text-orange-800"
             onClick={handleSearch}
           >
             Search
           </button>
         </div>
+        {/* Separator */}
+        <div className="my-3 flex items-center justify-center gap-3">
+          <div className="w-8 h-0.5 bg-orange-400 rounded-full animate-pulse" />
+          <span className="text-sm sm:text-base text-gray-300 font-medium">
+            OR
+          </span>
+          <div className="w-8 h-0.5 bg-orange-400 rounded-full animate-pulse" />
+        </div>
+
+        {/* Suggestion heading */}
+        <h3 className="flex flex-col w-fit mx-auto align-middle justify-center mt-4 text-lg sm:text-xl md:text-4xl font-semibold">
+          <div className="mr-5 my-auto">Just Ask{" "}</div>
+          <Link
+            href="/magic-chef-ai"
+            className="flex text-white font-bold py-2 px-3 rounded-xl bg-gradient-to-tr from-orange-600 to-orange-300 w-fit mx-auto mt-2"
+          >
+            <div>😋 Magic Chef</div>
+            <div className=" w-fit mx-auto text-sm lg:text-xl bg-white text-orange-600 font-bold px-3 lg:px-5 py-0.5 rounded-full shadow-md ml-2 h-fit my-auto">
+              AI
+            </div>
+          </Link>
+        </h3>
       </div>
     </div>
   );
